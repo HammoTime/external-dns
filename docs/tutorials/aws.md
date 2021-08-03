@@ -180,6 +180,9 @@ rules:
 - apiGroups: [""]
   resources: ["nodes"]
   verbs: ["list","watch"]
+- apiGroups: [""]
+  resources: ["endpoints"]
+  verbs: ["get","watch","list"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -192,7 +195,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: external-dns
-  namespace: default
+  namespace: external-dns
 ---
 apiVersion: apps/v1
 kind: Deployment
